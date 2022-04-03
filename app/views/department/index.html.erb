@@ -1,0 +1,43 @@
+<div align="center">
+  <h2>Departments</h2>
+  <a href="<%=create_department_path %>" ><button> Add Department </button> </a>
+  <style>
+      table {
+          background-color: rgba(150, 212, 212, 0.4);
+          font-size: large;
+      }
+      button{
+          margin-bottom: 5px;
+          color: coral;
+          font-size: large;
+      }
+
+  </style>
+
+
+
+  <table border="2px blue solid">
+
+
+    <thead>
+    <tr>
+      <th>Department Name</th>
+
+      <th>Department Location</th>
+
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @departments.each do |department| %>
+      <tr>
+        <td><%=department.name %></td>
+        <td><%=department.location %></td>
+        <td><a href="<%=details_department_path(department) %>"> show</a></td>
+        <td><a href="<%=show_department_path(department) %>"> Edit</a></td>
+        <td><a href="<%=delete_department_path(department) %>"> Delete</a></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

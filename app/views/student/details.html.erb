@@ -1,0 +1,78 @@
+<div align="center">
+  <h2>Student Details</h2>
+
+  <style>
+      table {
+          background-color: rgba(150, 212, 212, 0.4);
+          font-size: large;
+      }
+      button{
+          margin-bottom: 5px;
+          color: coral;
+          font-size: large;
+      }
+
+  </style>
+
+
+
+  <table border="2px blue solid">
+
+
+    <thead>
+    <tr>
+      <th>Student Name</th>
+      <th>Student Email</th>
+      <th>Department</th>
+      <th>Student Phone</th>
+
+
+
+    </tr>
+    </thead>
+
+    <tbody>
+
+    <tr>
+      <td><%=@student.name %></td>
+      <td><%=@student.email %></td>
+
+      <td><%=@student.department.name %></td>
+      <td><%=@student.phone %></td>
+
+
+    </tr>
+
+    </tbody>
+  </table>
+
+  <h2>Enrolled Course</h2>
+  <table border="2px blue solid">
+
+
+    <thead>
+    <tr>
+      <th>Course code</th>
+      <th>Course Title</th>
+      <th>Course Credit</th>
+      <th>Semester</th>
+      <th>Department</th>
+      <th>Teacher</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @student.courses.each do |course| %>
+      <tr>
+        <td><%=course.course_code %></td>
+        <td><%=course.course_title %></td>
+        <td><%=course.course_credit %></td>
+        <td><%=course.semester %></td>
+        <td><%=course.department.name %></td>
+        <td><%=course.teacher.name %></td>
+
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

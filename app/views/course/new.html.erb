@@ -1,0 +1,43 @@
+<h1>Course Add Form</h1>
+
+<% if @course.id.nil?%>
+  <form action="<%=store_course_path %>" method="post">
+<%else %>
+  <form action="<%=update_course_path %>" method="post">
+<%end %>
+<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+<label for="course[course_code]">Course Code: </label>
+<input type="text" name="course[course_code]" value="<%=@course[:course_code] %>">
+
+<label for="course[course_title]">Course Title:</label>
+<input type="text" name="course[course_title]" value="<%=@course[:course_title] %>">
+
+<label for="course[semester]">Semester:</label>
+<input type="text" name="course[semester]" value="<%=@course[:semester] %>">
+<label for="course[course_code]">Course Credit</label>
+<input type="number" step="0.5" name="course[course_credit]" value="<%=@course[:course_credit] %>" >
+
+<label for="teacher">Teacher :</label>
+
+<select id="teacher" name="course[teacher_id]" >
+  <% @teachers.each do |teacher| %>
+    <%if teacher.id == @course.teacher_id %>
+      <option selected value="<%=teacher[:id] %>"><%=teacher[:name] %></option>
+    <%else %>
+      <option value="<%=teacher[:id] %>"><%=teacher[:name] %></option>
+    <%end %>
+
+  <% end %>
+</select>
+
+
+<label for="department" >Department :</label>
+
+<select id="department" name="course[department_id]">
+  <% @departments.each do |department| %>
+    <option value="<%=department[:id] %>"><%=department[:name] %></option>
+  <% end %>
+</select>
+
+<input type="submit">
+</form>

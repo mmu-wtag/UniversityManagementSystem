@@ -1,0 +1,41 @@
+
+<h1><%=current_user.name%></h1>
+
+<h1><%=current_user.type%></h1>
+
+<h3><%=current_user.department.name%></h3>
+
+<h3><%=current_user.phone%></h3>
+
+<h3><%=current_user.email%></h3>
+
+<h2>Courses:</h2>
+<table border="2px blue solid">
+
+
+  <thead>
+  <tr>
+    <th>Course code</th>
+    <th>Course Title</th>
+    <th>Course Credit</th>
+    <th>Semester</th>
+    <th>Department</th>
+    <th>Teacher</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% current_user.courses.each do |course| %>
+    <tr>
+      <td><%=course.course_code %></td>
+      <td><%=course.course_title %></td>
+      <td><%=course.course_credit %></td>
+      <td><%=course.semester %></td>
+      <td><%=course.department.name %></td>
+      <td><%=course.teacher.name %></td>
+      <td><a href="<%=details_profile_path(course) %>">View Student</a></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+

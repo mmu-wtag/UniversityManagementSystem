@@ -1,0 +1,30 @@
+<h1>Student Add Form</h1>
+
+<% if @student.id.nil?%>
+  <form action="<%=store_student_path%>" method="post">
+<%else %>
+  <form action="<%=update_student_path %>" method="post">
+<%end %>
+<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+<label for="student[name]">Student Name: </label>
+<input type="text" name="student[name]" value="<%=@student[:name] %>">
+
+<label for="student[email]">email: </label>
+<input type="text" name="student[email]" value="<%=@student[:email] %>">
+
+<label for="student[phone]">phone: </label>
+<input type="text" name="student[phone]" value="<%=@student[:phone] %>">
+
+<label for="student[password]">password: </label>
+<input type="text" name="student[password]" value="<%=@student[:password] %>">
+
+<label for="department" >Department :</label>
+
+<select id="department" name="student[department_id]">
+  <% @departments.each do |department| %>
+    <option value="<%=department[:id] %>"><%=department[:name] %></option>
+  <% end %>
+</select>
+
+<input type="submit">
+</form>

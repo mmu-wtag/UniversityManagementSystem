@@ -1,0 +1,82 @@
+<div align="center">
+  <h2><%=@department.name%></h2>
+
+  <style>
+      table {
+          background-color: rgba(150, 212, 212, 0.4);
+          font-size: large;
+      }
+      button{
+          margin-bottom: 5px;
+          color: coral;
+          font-size: large;
+      }
+
+  </style>
+
+
+
+  <table border="2px blue solid">
+
+
+    <thead>
+    <tr>
+      <th>Department Name</th>
+      <th>Department Location</th>
+      <th>Department Head</th>
+      <th>Students Count</th>
+      <th>Teachers Count</th>
+
+
+    </tr>
+    </thead>
+
+    <tbody>
+
+      <tr>
+        <td><%=@department.name %></td>
+        <td><%=@department.location %></td>
+        <%if @department.department_head.nil?%>
+        <td><%=@department.department_head %></td>
+          <%else %>
+          <td><%=@department.department_head.name %></td>
+          <%end %>
+        <td><%=@department.students.count %></td>
+        <td><%=@department.teachers.count %></td>
+
+
+
+      </tr>
+
+    </tbody>
+  </table>
+  <h2>Offered Courses:</h2>
+  <table border="2px blue solid">
+
+
+    <thead>
+    <tr>
+      <th>Course code</th>
+      <th>Course Title</th>
+      <th>Course Credit</th>
+      <th>Semester</th>
+      <th>Department</th>
+      <th>Teacher</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @department.courses.each do |course| %>
+      <tr>
+        <td><%=course.course_code %></td>
+        <td><%=course.course_title %></td>
+        <td><%=course.course_credit %></td>
+        <td><%=course.semester %></td>
+        <td><%=course.department.name %></td>
+        <td><%=course.teacher.name %></td>
+
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

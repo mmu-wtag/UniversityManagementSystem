@@ -1,0 +1,16 @@
+<h1>Department Add Form</h1>
+
+<% if @department.id.nil?%>
+  <form action="<%=store_department_path %>" method="post">
+<%else %>
+  <form action="<%=update_department_path %>" method="post">
+<%end %>
+<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+<label for="department[name]">Department Name: </label>
+<input type="text" name="department[name]" value="<%=@department[:name] %>">
+
+<label for="department[location]">Department Location: </label>
+<input type="text" name="department[location]" value="<%=@department[:location] %>">
+
+<input type="submit">
+</form>

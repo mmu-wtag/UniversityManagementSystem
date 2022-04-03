@@ -1,0 +1,30 @@
+<h1>Teacher Add Form</h1>
+
+<% if @teacher.id.nil?%>
+  <form action="<%=store_teacher_path%>" method="post">
+<%else %>
+  <form action="<%=update_teacher_path %>" method="post">
+<%end %>
+<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+<label for="teacher[name]">Teacher Name: </label>
+<input type="text" name="teacher[name]" value="<%=@teacher[:name] %>">
+
+<label for="teacher[email]">email: </label>
+<input type="text" name="teacher[email]" value="<%=@teacher[:email] %>">
+
+<label for="teacher[phone]">phone: </label>
+<input type="text" name="teacher[phone]" value="<%=@teacher[:phone] %>">
+
+<label for="teacher[password]">password: </label>
+<input type="text" name="teacher[password]" value="<%=@teacher[:password] %>">
+
+<label for="department" >Department :</label>
+
+<select id="department" name="teacher[department_id]">
+  <% @departments.each do |department| %>
+    <option value="<%=department[:id] %>"><%=department[:name] %></option>
+  <% end %>
+</select>
+
+<input type="submit">
+</form>

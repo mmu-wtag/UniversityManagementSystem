@@ -1,0 +1,45 @@
+<div align="center">
+  <h2>Teachers</h2>
+  <style>
+      table {
+          background-color: rgba(150, 212, 212, 0.4);
+          font-size: large;
+      }
+      button{
+          margin-bottom: 5px;
+          color: coral;
+          font-size: large;
+      }
+
+  </style>
+
+  <a href="<%=create_teacher_path %>" ><button> Add Teacher </button> </a>
+
+  <table border="2px blue solid">
+
+
+    <thead>
+    <tr>
+      <th>Teacher Name</th>
+      <th>Teacher Email</th>
+      <th>Department</th>
+      <th>Teacher Course Count</th>
+
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @teachers.each do |teacher| %>
+      <tr>
+        <td><%=teacher.name %></td>
+        <td><%=teacher.email %></td>
+        <td><%=teacher.department.name %></td>
+        <td><%=teacher.courses.count %></td>
+        <td><a href="<%=details_teacher_path(teacher) %>"> show</a></td>
+        <td><a href="<%=show_teacher_path(teacher) %>"> Edit</a></td>
+        <td><a href="<%=delete_teacher_path(teacher) %>"> Delete</a></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

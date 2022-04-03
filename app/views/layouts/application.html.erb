@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>UniversityManagementSystem</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <div align="center">
+  <body>
+  <style>
+  button{
+  margin-bottom: 5px;
+  color: coral;
+  font-size: large;
+  }
+  h1{
+      color: yellowgreen;
+  }
+  </style>
+
+    <h1>University Management System</h1>
+
+    <a href="<%=course_list_path %>"><button>Enroll Course</button></a>
+
+    <a href="<%=root_path %>" > <button> Courses </button> </a>
+    <a href="<%=departments_path %>" > <button> Departments </button> </a>
+    <a href="<%=teachers_path %>" > <button> Teachers </button> </a>
+    <a href="<%=students_path%>" > <button> Students </button> </a>
+    <a href="" > <button> Admins </button> </a>
+  <% if signed_in? %>
+    <a href="<%=show_profile_path(current_user)%>" ><%= button_to current_user.name %></a>
+    <%= button_to "Sign Out", sign_out_path, method: :delete %>
+  <% else %>
+    <%= link_to "Sign in", sign_in_path %>
+  <% end %>
+    <%= yield %>
+  </body>
+  </div>
+</html>
